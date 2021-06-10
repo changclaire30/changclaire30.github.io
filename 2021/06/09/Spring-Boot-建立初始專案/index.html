@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Spring Boot 建立初始專案"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Claire's blog" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://changclaire30.github.io/2021/06/09/Spring-Boot-建立初始專案/"/>
+
+
+<meta name="description" content="Spring Boot是Java程式語言的網頁後端Framework，在其官方網站有簡單的設置教學(英文)，是使用 start.spring.io 這個圖形介面化網站選擇後，點選”Generate”下載JAR檔開啟，也可以將同樣設定分享(Share)給其他人，十分簡單明瞭。  如圖中所示，有不同的選項包括Java的版本，根據所選的Java版本，可在Oracle網站下載對應的JDK。 在右方欄位可根">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot 建立初始專案">
+<meta property="og:url" content="http://changclaire30.github.io/2021/06/09/Spring-Boot-%E5%BB%BA%E7%AB%8B%E5%88%9D%E5%A7%8B%E5%B0%88%E6%A1%88/index.html">
+<meta property="og:site_name" content="Claire&#39;s blog">
+<meta property="og:description" content="Spring Boot是Java程式語言的網頁後端Framework，在其官方網站有簡單的設置教學(英文)，是使用 start.spring.io 這個圖形介面化網站選擇後，點選”Generate”下載JAR檔開啟，也可以將同樣設定分享(Share)給其他人，十分簡單明瞭。  如圖中所示，有不同的選項包括Java的版本，根據所選的Java版本，可在Oracle網站下載對應的JDK。 在右方欄位可根">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://spring.io/images/quick-img-1-12bfde9c5c280b1940d85dee3d81772d.png">
+<meta property="article:published_time" content="2021-06-10T04:56:22.000Z">
+<meta property="article:modified_time" content="2021-06-10T04:54:15.725Z">
+<meta property="article:author" content="Claire Chang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://spring.io/images/quick-img-1-12bfde9c5c280b1940d85dee3d81772d.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Spring Boot 建立初始專案 - Claire's blog </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Claire's blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Spring Boot 建立初始專案
+        
+      </h1>
+
+      <time class="post-time">
+          6月 09 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>Spring Boot是Java程式語言的網頁後端Framework，在其官方網站有簡單的<a target="_blank" rel="noopener" href="https://spring.io/quickstart">設置教學</a>(英文)，是使用 <a target="_blank" rel="noopener" href="http://start.spring.io/">start.spring.io</a> 這個圖形介面化網站選擇後，點選”Generate”下載JAR檔開啟，也可以將同樣設定分享(Share)給其他人，十分簡單明瞭。</p>
+<p><img src="https://spring.io/images/quick-img-1-12bfde9c5c280b1940d85dee3d81772d.png" alt="image"></p>
+<p>如圖中所示，有不同的選項包括Java的版本，根據所選的Java版本，可在<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase-downloads.html">Oracle網站</a>下載對應的JDK。</p>
+<p>在右方欄位可根據自己的需求選擇dependencies，例如Spring Web、Spring Data JPA、不同的database等等。</p>
+<h2 id="下載並開啟"><a href="#下載並開啟" class="headerlink" title="下載並開啟"></a>下載並開啟</h2><p>下載完成之後會是zip檔案，解壓縮之後到開發環境IDE開啟，我是使用IntelliJ(有免費的Community版本)，但也有人會使用Visual Studio Code，例如這篇痞客邦的<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10218024">鐵人文章</a>。</p>
+<p>在prom.xml檔案中可看到專案的詳細內容包括dependencies，若對該檔案有更動，建議在檔案名稱點選右鍵 &gt; Maven &gt; Reload project。</p>
+<h2 id="專案跑起來"><a href="#專案跑起來" class="headerlink" title="專案跑起來"></a>專案跑起來</h2><p>而在src/main/java/com/example/demo這個檔案夾底下，可以找到程式檔案DemoApplication.java，找到畫面中的綠色箭頭，選擇Run ‘DemoApplication’就可以跑專案了，或也可以在Terminal下指令，可參考上面<a target="_blank" rel="noopener" href="https://spring.io/quickstart">設置教學</a>(英文)的Step 3。</p>
+<p>等一下下之後，下方會跳出視窗，如果沒有紅色的error訊息，而是白色的Spring圖形就是成功了。若是選擇網站開發，也可以在DemoApplication的檔案裡面撰寫不同的return值，在<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a> 查看結果。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2021/06/09/hello-world/">
+        <span class="next-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">Claire Chang.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
