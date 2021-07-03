@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Java學習筆記"/>
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Claire's blog" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/03/Java學習筆記/"/>
+
+
+<meta name="description" content="12345public class Main &amp;#123;  public static void main(String[] args) &amp;#123;    System.out.println(&quot;Hello World&quot;);  &amp;#125;&amp;#125;  Java每一行程式碼都屬於一個class，class都是大寫開頭，例如Main。 main()每個Java程式都必須要有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java學習筆記">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/03/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="Claire&#39;s blog">
+<meta property="og:description" content="12345public class Main &amp;#123;  public static void main(String[] args) &amp;#123;    System.out.println(&quot;Hello World&quot;);  &amp;#125;&amp;#125;  Java每一行程式碼都屬於一個class，class都是大寫開頭，例如Main。 main()每個Java程式都必須要有">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-07-03T18:44:44.000Z">
+<meta property="article:modified_time" content="2021-07-03T20:27:21.244Z">
+<meta property="article:author" content="Claire Chang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Java學習筆記 - Claire's blog </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Claire's blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Java學習筆記
+        
+      </h1>
+
+      <time class="post-time">
+          7月 03 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    System.out.println(&quot;Hello World&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Java每一行程式碼都屬於一個class，class都是大寫開頭，例如Main。</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>每個Java程式都必須要有main()，且一定會被執行。</p>
+<h2 id="Java-Variables"><a href="#Java-Variables" class="headerlink" title="Java Variables"></a>Java Variables</h2><p><code>type variable = value;</code></p>
+<p>例如：<br><code>String name = &quot;John&quot;</code></p>
+<p>先宣告變項，再assign數值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int myNum;</span><br><span class="line">myNum = 15;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Final-Variables"><a href="#Final-Variables" class="headerlink" title="Final Variables"></a>Final Variables</h2><p>變項的數值不能被覆寫(overwrite)<br><code>final int myNum = 15;</code></p>
+<h2 id="多個同類型變數同時宣告"><a href="#多個同類型變數同時宣告" class="headerlink" title="多個同類型變數同時宣告"></a>多個同類型變數同時宣告</h2><p><code>int x = 5, y = 6, z = 7;</code></p>
+<h2 id="資料類型"><a href="#資料類型" class="headerlink" title="資料類型"></a>資料類型</h2><p><a target="_blank" rel="noopener" href="https://www.w3schools.com/java/java_data_types.asp">https://www.w3schools.com/java/java_data_types.asp</a></p>
+<h2 id="Casting"><a href="#Casting" class="headerlink" title="Casting"></a>Casting</h2><p>primitive資料類型轉為另一種。</p>
+<ul>
+<li><p>Widening Casting (automatically) - converting a smaller type to a larger type size<br>byte -&gt; short -&gt; char -&gt; int -&gt; long -&gt; float -&gt; double</p>
+</li>
+<li><p>Narrowing Casting (manually) - converting a larger type to a smaller size type<br>double -&gt; float -&gt; long -&gt; int -&gt; char -&gt; short -&gt; byte</p>
+</li>
+</ul>
+<h2 id="String-method"><a href="#String-method" class="headerlink" title="String method"></a>String method</h2><ul>
+<li>length()</li>
+<li>toUpperCase(), toLowerCase()</li>
+<li>indexOf()</li>
+<li>concat()</li>
+</ul>
+<h2 id="算數方法"><a href="#算數方法" class="headerlink" title="算數方法"></a>算數方法</h2><ul>
+<li>Math.max(x, y), Math.min(x, y)</li>
+<li>Math.sqrt(x)</li>
+<li>Math.abs(x)</li>
+<li>Math.random()</li>
+</ul>
+<h2 id="If…Else條件式簡寫"><a href="#If…Else條件式簡寫" class="headerlink" title="If…Else條件式簡寫"></a>If…Else條件式簡寫</h2><p><code>variable = (condiction) ? expressionTrue : expressionFalse;</code></p>
+<h2 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">switch(expression) &#123;</span><br><span class="line">  case x:</span><br><span class="line">    // code block</span><br><span class="line">    break;</span><br><span class="line">  case y:</span><br><span class="line">    // code block</span><br><span class="line">    break;</span><br><span class="line">  default:</span><br><span class="line">    // code block</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="while-amp-do-while"><a href="#while-amp-do-while" class="headerlink" title="while &amp; do/while"></a>while &amp; do/while</h2><p>差別：do/while至少會運行一次，才檢查condition</p>
+<p>while:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while (condition) &#123;</span><br><span class="line">  // code block to be executed</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>do/while:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">  // code block to be executed</span><br><span class="line">&#125;</span><br><span class="line">while (condition);</span><br></pre></td></tr></table></figure>
+
+<h2 id="for-each-loop"><a href="#for-each-loop" class="headerlink" title="for-each loop"></a>for-each loop</h2><p>用來loop陣列(array)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (type variableName : arrayName) &#123;</span><br><span class="line">  // code block to be executed</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String[] cars = &#123;&quot;Volvo&quot;, &quot;BMW&quot;, &quot;Ford&quot;, &quot;Mazda&quot;&#125;;</span><br><span class="line">for (String i : cars) &#123;</span><br><span class="line">  System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="break-amp-continue"><a href="#break-amp-continue" class="headerlink" title="break &amp; continue"></a>break &amp; continue</h2><ul>
+<li>break: 跳出、終止loop</li>
+<li>continue: 跳出當前的loop，但會繼續到下一個</li>
+</ul>
+<h2 id="array"><a href="#array" class="headerlink" title="array"></a>array</h2><p><code>String[] cars = &#123;&quot;Volvo&quot;, &quot;BMW&quot;, &quot;Ford&quot;, &quot;Mazda&quot;&#125;;</code></p>
+<p>多維度：<br><code>int[][] myNumbers = &#123; &#123;1, 2, 3, 4&#125;, &#123;5, 6, 7&#125; &#125;;</code></p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Java/">Java</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2021/07/02/Spring-Boot-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-dependency-injection/">
+        <span class="next-text nav-default">Spring Boot 學習筆記 | dependency injection</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">Claire Chang.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
