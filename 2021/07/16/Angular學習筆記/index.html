@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="let、const差異比較和使用時機"/>
+  <meta name="description" content="Angular學習筆記"/>
 
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="Angular," />
 
 
 
@@ -32,20 +32,20 @@
 
 
 
-<link rel="canonical" href="http://changclaire30.github.io/2021/07/14/let、const差異比較和使用時機/"/>
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/16/Angular學習筆記/"/>
 
 
-<meta name="description" content="let vs. const let 声明的变量只在 let 命令所在的代码块内有效。 const 声明一个只读的常量，一旦声明，常量的值就不能改变。  參考文章：https:&#x2F;&#x2F;www.runoob.com&#x2F;js&#x2F;js-let-const.htmlhttps:&#x2F;&#x2F;wcc723.github.io&#x2F;javascript&#x2F;2017&#x2F;12&#x2F;20&#x2F;javascript-es6-let-const&#x2F; let">
+<meta name="description" content="定義ComponentComponent的style和template可以使用backtick(&#96;)來做到多行撰寫 1234567891011@Compoenent(&amp;#123;    selector: &amp;#x27;something&amp;#x27;,    template: &#96;        &lt;app-server&gt;&lt;&#x2F;app-server&gt;        &lt;app">
 <meta property="og:type" content="article">
-<meta property="og:title" content="let、const差異比較和使用時機">
-<meta property="og:url" content="http://changclaire30.github.io/2021/07/14/let%E3%80%81const%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83%E5%92%8C%E4%BD%BF%E7%94%A8%E6%99%82%E6%A9%9F/index.html">
+<meta property="og:title" content="Angular學習筆記">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/16/Angular%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.html">
 <meta property="og:site_name" content="Claire&#39;s blog">
-<meta property="og:description" content="let vs. const let 声明的变量只在 let 命令所在的代码块内有效。 const 声明一个只读的常量，一旦声明，常量的值就不能改变。  參考文章：https:&#x2F;&#x2F;www.runoob.com&#x2F;js&#x2F;js-let-const.htmlhttps:&#x2F;&#x2F;wcc723.github.io&#x2F;javascript&#x2F;2017&#x2F;12&#x2F;20&#x2F;javascript-es6-let-const&#x2F; let">
+<meta property="og:description" content="定義ComponentComponent的style和template可以使用backtick(&#96;)來做到多行撰寫 1234567891011@Compoenent(&amp;#123;    selector: &amp;#x27;something&amp;#x27;,    template: &#96;        &lt;app-server&gt;&lt;&#x2F;app-server&gt;        &lt;app">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2021-07-14T16:55:00.000Z">
-<meta property="article:modified_time" content="2021-07-14T18:47:03.681Z">
+<meta property="article:published_time" content="2021-07-16T16:33:30.000Z">
+<meta property="article:modified_time" content="2021-07-16T16:37:28.733Z">
 <meta property="article:author" content="Claire Chang">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Angular">
 <meta name="twitter:card" content="summary">
 
 
@@ -71,7 +71,7 @@
 
 
 
-    <title> let、const差異比較和使用時機 - Claire's blog </title>
+    <title> Angular學習筆記 - Claire's blog </title>
   <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body>
@@ -117,12 +117,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          let、const差異比較和使用時機
+          Angular學習筆記
         
       </h1>
 
       <time class="post-time">
-          7月 14 2021
+          7月 16 2021
       </time>
     </header>
 
@@ -130,17 +130,11 @@
 
     
             <div class="post-content">
-            <h1 id="let-vs-const"><a href="#let-vs-const" class="headerlink" title="let vs. const"></a>let vs. const</h1><ul>
-<li>let 声明的变量只在 let 命令所在的代码块内有效。</li>
-<li>const 声明一个只读的常量，一旦声明，常量的值就不能改变。</li>
-</ul>
-<p>參考文章：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-let-const.html">https://www.runoob.com/js/js-let-const.html</a><br><a target="_blank" rel="noopener" href="https://wcc723.github.io/javascript/2017/12/20/javascript-es6-let-const/">https://wcc723.github.io/javascript/2017/12/20/javascript-es6-let-const/</a></p>
-<h1 id="let、const使用時機"><a href="#let、const使用時機" class="headerlink" title="let、const使用時機"></a>let、const使用時機</h1><ul>
-<li>你认为某个量应该表现为常量，使用 const。你认为某个量应该表现为可变量，就用 let。</li>
-<li>默认全用 let，只在符合一些写代码的人的主观判断条件的时候用 const</li>
-<li>默认全用 const，只有该变量需要被重新赋值才用 let</li>
-</ul>
-<p>參考文章：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ziyunfei/p/6038213.html">https://www.cnblogs.com/ziyunfei/p/6038213.html</a></p>
+            <h1 id="定義Component"><a href="#定義Component" class="headerlink" title="定義Component"></a>定義Component</h1><p>Component的style和template可以使用backtick(`)來做到多行撰寫</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Compoenent(&#123;</span><br><span class="line">    selector: &#x27;something&#x27;,</span><br><span class="line">    template: `</span><br><span class="line">        &lt;app-server&gt;&lt;/app-server&gt;</span><br><span class="line">        &lt;app-server&gt;&lt;/app-server&gt;`,</span><br><span class="line">    styles: [`</span><br><span class="line">        h3 &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    `],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>template和templateUrl只會擇一使用，styles和styleUrls也只會擇一使用。</p>
+<p>課程筆記：<a target="_blank" rel="noopener" href="https://www.udemy.com/course/the-complete-guide-to-angular-2">https://www.udemy.com/course/the-complete-guide-to-angular-2</a></p>
 
             </div>
           
@@ -150,7 +144,7 @@
 		
 		<div class="post-tags">
 		  
-			<a href="/tags/JavaScript/">JavaScript</a>
+			<a href="/tags/Angular/">Angular</a>
 		  
 		</div>
 		
@@ -159,15 +153,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2021/07/14/Typescript-function%E5%87%BD%E5%BC%8F%E8%A6%8F%E5%89%87/">
+      <a class="prev" href="/2021/07/19/Angular%20binding%EF%BD%9C%E4%B8%8A%E5%B1%A4%E5%82%B3%E5%85%A5%E4%B8%8B%E5%B1%A4%EF%BC%8C%E7%88%B6%E5%AD%90%E5%85%83%E4%BB%B6%E4%BA%92%E5%8B%95/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Typescript object物件類型、function函式規則</span>
+        <span class="prev-text nav-default">Angular binding｜上層傳入下層，父子元件互動</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
-      <a class="next" href="/2021/07/05/Angular%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4command-line/">
-        <span class="next-text nav-default">Angular常用指令command line</span>
+      <a class="next" href="/2021/07/14/Typescript-function%E5%87%BD%E5%BC%8F%E8%A6%8F%E5%89%87/">
+        <span class="next-text nav-default">Typescript object物件類型、function函式規則</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>

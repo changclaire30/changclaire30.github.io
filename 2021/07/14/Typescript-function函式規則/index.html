@@ -35,15 +35,15 @@
 <link rel="canonical" href="http://changclaire30.github.io/2021/07/14/Typescript-function函式規則/"/>
 
 
-<meta name="description" content="Annotations Parameter Type  定義傳入值類型 123function greet(name: string) &amp;#123;    console.log(&quot;Hello &quot; + name);&amp;#125;   Return Type  定義回傳值類型 123function age(): number &amp;#123;    return 25;&amp;#125;">
+<meta name="description" content="Annotations Parameter Type  定義傳入值類型 123function greet(name: string) &amp;#123;    console.log(&quot;Hello &quot; + name);&amp;#125;    Return Type  定義回傳值類型 123function age(): number &amp;#123;    return 25;&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Typescript object物件類型、function函式規則">
 <meta property="og:url" content="http://changclaire30.github.io/2021/07/14/Typescript-function%E5%87%BD%E5%BC%8F%E8%A6%8F%E5%89%87/index.html">
 <meta property="og:site_name" content="Claire&#39;s blog">
-<meta property="og:description" content="Annotations Parameter Type  定義傳入值類型 123function greet(name: string) &amp;#123;    console.log(&quot;Hello &quot; + name);&amp;#125;   Return Type  定義回傳值類型 123function age(): number &amp;#123;    return 25;&amp;#125;">
+<meta property="og:description" content="Annotations Parameter Type  定義傳入值類型 123function greet(name: string) &amp;#123;    console.log(&quot;Hello &quot; + name);&amp;#125;    Return Type  定義回傳值類型 123function age(): number &amp;#123;    return 25;&amp;#125;">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-07-14T18:46:45.000Z">
-<meta property="article:modified_time" content="2021-07-14T19:16:30.578Z">
+<meta property="article:modified_time" content="2021-07-16T16:31:11.611Z">
 <meta property="article:author" content="Claire Chang">
 <meta property="article:tag" content="Typescript">
 <meta name="twitter:card" content="summary">
@@ -136,22 +136,27 @@
 <p>定義傳入值類型</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function greet(name: string) &#123;</span><br><span class="line">    console.log(&quot;Hello &quot; + name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
 <ol start="2">
 <li>Return Type</li>
 </ol>
 <p>定義回傳值類型</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function age(): number &#123;</span><br><span class="line">    return 25;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
 <ol start="3">
 <li>Anonymous</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const names = [&#x27;Alice&#x27;, &#x27;Bob&#x27;];</span><br><span class="line">names.forEach((s) =&gt; &#123;</span><br><span class="line">    console.log(s);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+
 <h1 id="物件作為函式值"><a href="#物件作為函式值" class="headerlink" title="物件作為函式值"></a>物件作為函式值</h1><p>如果有部分property是optional，在property後方加上問號「?」</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function printName(obj: &#123;first: string, last?: string&#125;) &#123;</span><br><span class="line">    console.log(obj.first);</span><br><span class="line">    console.log(obj.last?);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
 <h1 id="兼容不同資料類型-Union-type"><a href="#兼容不同資料類型-Union-type" class="headerlink" title="兼容不同資料類型(Union type)"></a>兼容不同資料類型(Union type)</h1><p>以下範例可接受數值或字串的輸入。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function printId(id: number | String) &#123;</span><br><span class="line">    console.log(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">printId(101);</span><br><span class="line">printId(&quot;202);</span><br></pre></td></tr></table></figure>
+
 
 <h2 id="Union-type會遇到的問題"><a href="#Union-type會遇到的問題" class="headerlink" title="Union type會遇到的問題"></a>Union type會遇到的問題</h2><p>若方法沒辦法「都」應用到union所定義的資料類型，會顯示錯誤：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function printId(id: number | String) &#123;</span><br><span class="line">    console.log(id.toUpperCase());</span><br></pre></td></tr></table></figure>
@@ -159,14 +164,17 @@
 <p>解決方法可以狹義資料類型，使用typeof：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function printId(id: number | String) &#123;</span><br><span class="line">    if (typeof id === &quot;string&quot;) &#123; ... &#125;</span><br><span class="line">    else &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
 <h1 id="類型別名-Type-alias"><a href="#類型別名-Type-alias" class="headerlink" title="類型別名(Type alias)"></a>類型別名(Type alias)</h1><p>定義資料的類型並重複使用，舉例來說我們可以簡化例子中的obj：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function printName(obj: &#123;first: string, last?: string&#125;) &#123;</span><br><span class="line">    console.log(obj.first);</span><br><span class="line">    console.log(obj.last?);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 簡化</span><br><span class="line">type FullName = &#123;first: string, last?: string&#125;;</span><br><span class="line"></span><br><span class="line">function printName(obj: FullName) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
 
 <h1 id="Interaface"><a href="#Interaface" class="headerlink" title="Interaface"></a>Interaface</h1><p>寫法和type alias相同。<br>interface和type alias的差別是，type alias不同被重新打開來增加新property，而interface可以一直extend。</p>
 <h1 id="類型斷言-type-assertion"><a href="#類型斷言-type-assertion" class="headerlink" title="類型斷言(type assertion)"></a>類型斷言(type assertion)</h1><p>告訴Typescript某個物件的資料類型，下方例子是斷言了value的類型是字串：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let value: any = &quot;a string&quot;;</span><br><span class="line">// 寫法一</span><br><span class="line">let length: number = (&lt;string&gt;value).length;</span><br><span class="line">// 寫法二</span><br><span class="line">let length: number = (value as string).length;</span><br></pre></td></tr></table></figure>
 
-<p>參考文章：<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html">https://www.typescriptlang.org/docs/handbook/2/everyday-types.html</a></p>
+
+<p>參考文章：<br><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html">https://www.typescriptlang.org/docs/handbook/2/everyday-types.html</a><br><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/functions.html">https://www.typescriptlang.org/docs/handbook/2/functions.html</a></p>
 
             </div>
           
@@ -184,6 +192,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2021/07/16/Angular%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Angular學習筆記</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
     
       <a class="next" href="/2021/07/14/let%E3%80%81const%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83%E5%92%8C%E4%BD%BF%E7%94%A8%E6%99%82%E6%A9%9F/">
