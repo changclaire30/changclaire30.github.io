@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="Angular學習筆記"/>
+  <meta name="description" content="Angular Encapsulation｜樣式封裝"/>
 
 
 
@@ -32,18 +32,18 @@
 
 
 
-<link rel="canonical" href="http://changclaire30.github.io/2021/07/16/Angular學習筆記/"/>
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/20/Angular Encapsulation｜樣式封裝/"/>
 
 
-<meta name="description" content="定義ComponentComponent的style和template可以使用backtick(&#96;)來做到多行撰寫 1234567891011@Compoenent(&amp;#123;    selector: &amp;#x27;something&amp;#x27;,    template: &#96;        &lt;app-server&gt;&lt;&#x2F;app-server&gt;        &lt;app">
+<meta name="description" content="Angular各component的css樣式定義，只會應用在各個css上。 因為Angular在ViewEncapsulation的預設，會在html的表現上，同個component都會套用同一個獨特的屬性ID。 可以在component.ts做設定： 1234@Component(&amp;#123;    ...    encapsulation: ViewEncapsulation.None,&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Angular學習筆記">
-<meta property="og:url" content="http://changclaire30.github.io/2021/07/16/Angular%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:title" content="Angular Encapsulation｜樣式封裝">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/20/Angular%20Encapsulation%EF%BD%9C%E6%A8%A3%E5%BC%8F%E5%B0%81%E8%A3%9D/index.html">
 <meta property="og:site_name" content="Claire&#39;s blog">
-<meta property="og:description" content="定義ComponentComponent的style和template可以使用backtick(&#96;)來做到多行撰寫 1234567891011@Compoenent(&amp;#123;    selector: &amp;#x27;something&amp;#x27;,    template: &#96;        &lt;app-server&gt;&lt;&#x2F;app-server&gt;        &lt;app">
+<meta property="og:description" content="Angular各component的css樣式定義，只會應用在各個css上。 因為Angular在ViewEncapsulation的預設，會在html的表現上，同個component都會套用同一個獨特的屬性ID。 可以在component.ts做設定： 1234@Component(&amp;#123;    ...    encapsulation: ViewEncapsulation.None,&amp;#">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2021-07-16T16:33:30.000Z">
-<meta property="article:modified_time" content="2021-07-16T16:37:28.733Z">
+<meta property="article:published_time" content="2021-07-20T14:10:12.000Z">
+<meta property="article:modified_time" content="2021-07-20T14:13:31.178Z">
 <meta property="article:author" content="Claire Chang">
 <meta property="article:tag" content="Angular">
 <meta name="twitter:card" content="summary">
@@ -71,7 +71,7 @@
 
 
 
-    <title> Angular學習筆記 - Claire's blog </title>
+    <title> Angular Encapsulation｜樣式封裝 - Claire's blog </title>
   <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body>
@@ -117,12 +117,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Angular學習筆記
+          Angular Encapsulation｜樣式封裝
         
       </h1>
 
       <time class="post-time">
-          7月 16 2021
+          7月 20 2021
       </time>
     </header>
 
@@ -130,11 +130,12 @@
 
     
             <div class="post-content">
-            <h1 id="定義Component"><a href="#定義Component" class="headerlink" title="定義Component"></a>定義Component</h1><p>Component的style和template可以使用backtick(`)來做到多行撰寫</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Compoenent(&#123;</span><br><span class="line">    selector: &#x27;something&#x27;,</span><br><span class="line">    template: `</span><br><span class="line">        &lt;app-server&gt;&lt;/app-server&gt;</span><br><span class="line">        &lt;app-server&gt;&lt;/app-server&gt;`,</span><br><span class="line">    styles: [`</span><br><span class="line">        h3 &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    `],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+            <p>Angular各component的css樣式定義，只會應用在各個css上。</p>
+<p>因為Angular在ViewEncapsulation的預設，會在html的表現上，同個component都會套用同一個獨特的屬性ID。</p>
+<p>可以在component.ts做設定：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    ...</span><br><span class="line">    encapsulation: ViewEncapsulation.None,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>template和templateUrl只會擇一使用，styles和styleUrls也只會擇一使用。</p>
-<p>課程筆記：<a target="_blank" rel="noopener" href="https://www.udemy.com/course/the-complete-guide-to-angular-2">https://www.udemy.com/course/the-complete-guide-to-angular-2</a></p>
+<p>設定為None的話，這個component.css的樣式，會套用到所有網頁元素。<br>Angular的預設為ViewEncapsulation.Emulated。</p>
 
             </div>
           
@@ -153,15 +154,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2021/07/19/Angular%20binding%EF%BD%9C%E4%B8%8A%E5%B1%A4%E5%82%B3%E5%85%A5%E4%B8%8B%E5%B1%A4%EF%BC%8C%E7%88%B6%E5%AD%90%E5%85%83%E4%BB%B6%E4%BA%92%E5%8B%95/">
+      <a class="prev" href="/2021/07/20/Angular%20local%20reference%EF%BD%9C%E5%9C%A8html%E5%AE%9A%E7%BE%A9%E4%B8%A6%E4%BD%BF%E7%94%A8%E7%89%A9%E4%BB%B6/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Angular binding｜上層傳入下層，父子元件互動</span>
+        <span class="prev-text nav-default">Angular local reference｜在html定義並使用物件</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
-      <a class="next" href="/2021/07/14/Typescript-function%E5%87%BD%E5%BC%8F%E8%A6%8F%E5%89%87/">
-        <span class="next-text nav-default">Typescript object物件類型、function函式規則</span>
+      <a class="next" href="/2021/07/19/Angular%20binding%EF%BD%9C%E4%B8%8A%E5%B1%A4%E5%82%B3%E5%85%A5%E4%B8%8B%E5%B1%A4%EF%BC%8C%E7%88%B6%E5%AD%90%E5%85%83%E4%BB%B6%E4%BA%92%E5%8B%95/">
+        <span class="next-text nav-default">Angular binding｜上層傳入下層，父子元件互動</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
