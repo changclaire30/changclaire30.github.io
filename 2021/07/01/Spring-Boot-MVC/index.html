@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Spring Boot 學習筆記｜MVC"/>
+
+
+
+
+  <meta name="keywords" content="Spring," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Claire's blog" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/01/Spring-Boot-MVC/"/>
+
+
+<meta name="description" content="MVC M: Model 模型 V: View 視圖 C: Controller 控制器  1234567891011121314@RestControllerpublic class SpringBootHelloWorld &amp;#123;	public static void main(String[] args) &amp;#123;		&#x2F;&#x2F; TODO Auto-generated method st">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot 學習筆記｜MVC">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/01/Spring-Boot-MVC/index.html">
+<meta property="og:site_name" content="Claire&#39;s blog">
+<meta property="og:description" content="MVC M: Model 模型 V: View 視圖 C: Controller 控制器  1234567891011121314@RestControllerpublic class SpringBootHelloWorld &amp;#123;	public static void main(String[] args) &amp;#123;		&#x2F;&#x2F; TODO Auto-generated method st">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-07-01T22:26:38.000Z">
+<meta property="article:modified_time" content="2021-07-21T20:30:27.297Z">
+<meta property="article:author" content="Claire Chang">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Spring Boot 學習筆記｜MVC - Claire's blog </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Claire's blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Spring Boot 學習筆記｜MVC
+        
+      </h1>
+
+      <time class="post-time">
+          7月 01 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><ul>
+<li>M: Model 模型</li>
+<li>V: View 視圖</li>
+<li>C: Controller 控制器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class SpringBootHelloWorld &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@RequestMapping(&quot;/&quot;)</span><br><span class="line">	public String hello()&#123;</span><br><span class="line">		return &quot;Hello World&quot;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><p>控制器：處理用戶的請求<br>@RequestController：註解來表示控制器<br>@RequestMapping(“/“)：URL為”/“的時候，執行下方的程式 -&gt; GET請求<br>@GetMapping、@PostMapping</p>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p>負責資料管理、資料庫設計</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>呈現在客戶端瀏覽器，通常以.html格式呈現<br>若有用到資料，就會配合Model的資料</p>
+<h2 id="教學影片"><a href="#教學影片" class="headerlink" title="教學影片"></a>教學影片</h2><p>Java Spring MVC和不同層的撰寫：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=9L-rxL7iZuM">https://www.youtube.com/watch?v=9L-rxL7iZuM</a></p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Spring/">Spring</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/07/02/Spring-Boot-dependency-injection/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Spring Boot 學習筆記 | dependency injection</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2021/06/16/scss-syntax/">
+        <span class="next-text nav-default">scss語法</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">Claire Chang.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

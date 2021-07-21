@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Angular binding｜上層傳入下層，父子元件互動"/>
+
+
+
+
+  <meta name="keywords" content="Angular," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Claire's blog" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/19/Angular-binding/"/>
+
+
+<meta name="description" content="上層將資料傳到下層上層帶資料，下層使用@Input()讓上層使用：  父元件資料 @parent.component.ts  123export class Parent &amp;#123;    dataElements &#x3D; [&amp;#123;name: &amp;#x27;Test&amp;#x27;, content: &amp;#x27;from parent&amp;#x27;&amp;#125;];&amp;#125;   父元件標註 @pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular binding｜上層傳入下層，父子元件互動">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/19/Angular-binding/index.html">
+<meta property="og:site_name" content="Claire&#39;s blog">
+<meta property="og:description" content="上層將資料傳到下層上層帶資料，下層使用@Input()讓上層使用：  父元件資料 @parent.component.ts  123export class Parent &amp;#123;    dataElements &#x3D; [&amp;#123;name: &amp;#x27;Test&amp;#x27;, content: &amp;#x27;from parent&amp;#x27;&amp;#125;];&amp;#125;   父元件標註 @pa">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-07-19T16:00:12.000Z">
+<meta property="article:modified_time" content="2021-07-21T20:29:07.275Z">
+<meta property="article:author" content="Claire Chang">
+<meta property="article:tag" content="Angular">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Angular binding｜上層傳入下層，父子元件互動 - Claire's blog </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Claire's blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Angular binding｜上層傳入下層，父子元件互動
+        
+      </h1>
+
+      <time class="post-time">
+          7月 19 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="上層將資料傳到下層"><a href="#上層將資料傳到下層" class="headerlink" title="上層將資料傳到下層"></a>上層將資料傳到下層</h1><p>上層帶資料，下層使用@Input()讓上層使用：</p>
+<ol>
+<li>父元件資料 @parent.component.ts</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export class Parent &#123;</span><br><span class="line">    dataElements = [&#123;name: &#x27;Test&#x27;, content: &#x27;from parent&#x27;&#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>父元件標註 @parent.component.html</li>
+</ol>
+<p>抓取dataElements資料，到child element，使用「cElement」的格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-child-element</span><br><span class="line">    *ngFor=&quot;let dataElement of dataElements&quot;</span><br><span class="line">    [cElement]=&quot;dataElement&quot;&gt;</span><br><span class="line">&lt;/app-child-element&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>子元件設定cElement @child.component.ts</li>
+</ol>
+<p>使用@Input()讓上層可以使用下層的物件，括號內(“”)可以寫在上層會怎麼被呼叫。<br>這裡element所定義的物件，在同層的html檔案中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export class Child implements OnInit &#123;</span><br><span class="line">  @Input(&#x27;cElement&#x27;) element: &#123;name: string, content: string&#125;;</span><br><span class="line"></span><br><span class="line">  constructor() &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit(): void &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>子元件設定 @child.component.html</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;&#123;&#123; element.name &#125;&#125;&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;&#123;&#123; element.content &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="上層監聽下層事件，下層資料傳到上層"><a href="#上層監聽下層事件，下層資料傳到上層" class="headerlink" title="上層監聽下層事件，下層資料傳到上層"></a>上層監聽下層事件，下層資料傳到上層</h1><p>下層使用EventEmitter屬性，當事件發生時，利用emit將事件傳到上層，上層做出回應。</p>
+<ol>
+<li>子元件設定觸發事件 @child.component.html</li>
+</ol>
+<p>按鈕點擊觸發onAddElement()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button (click)=&quot;onAddElement()&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用EventEmitter屬性，並設定emit事件 @child.component.ts</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, OnInit, EventEmitter, Output &#125; from &#x27;@angular/core&#x27;;</span><br><span class="line"></span><br><span class="line">export class ChildComponent implements OnInit &#123;</span><br><span class="line">  @Output() elementCreated = new EventEmitter&lt;eName: string, eContent: string&gt;();</span><br><span class="line">  newEName = &#x27;&#x27;;</span><br><span class="line">  newEContent = &#x27;&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Angular/">Angular</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/07/20/Angular-Encapsulation/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Angular Encapsulation｜樣式封裝</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2021/07/16/Angular-component/">
+        <span class="next-text nav-default">Angular定義component</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">Claire Chang.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
