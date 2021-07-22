@@ -35,15 +35,15 @@
 <link rel="canonical" href="http://changclaire30.github.io/2021/07/22/Angular-service-dependency-injection/"/>
 
 
-<meta name="description" content="使用service，可以更容易讓component之間互動。 如何定義服務Service 新增服務的typescript檔案  命名為hero.service.ts，這個service收到log字串，並顯示出內容。 12345export class HeroService &amp;#123;    heroLog(log: string) &amp;#123;        console.log(log);">
+<meta name="description" content="使用service，可以更容易讓component之間互動。 如何定義服務Service 新增服務的typescript檔案  命名為hero.service.ts，這個service將會收到log字串，並顯示出內容。 12345export class HeroService &amp;#123;    heroLog(log: string) &amp;#123;        console.log(log">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular service｜服務與依賴注入">
 <meta property="og:url" content="http://changclaire30.github.io/2021/07/22/Angular-service-dependency-injection/index.html">
 <meta property="og:site_name" content="Claire&#39;s blog">
-<meta property="og:description" content="使用service，可以更容易讓component之間互動。 如何定義服務Service 新增服務的typescript檔案  命名為hero.service.ts，這個service收到log字串，並顯示出內容。 12345export class HeroService &amp;#123;    heroLog(log: string) &amp;#123;        console.log(log);">
+<meta property="og:description" content="使用service，可以更容易讓component之間互動。 如何定義服務Service 新增服務的typescript檔案  命名為hero.service.ts，這個service將會收到log字串，並顯示出內容。 12345export class HeroService &amp;#123;    heroLog(log: string) &amp;#123;        console.log(log">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-07-22T15:33:41.000Z">
-<meta property="article:modified_time" content="2021-07-22T16:49:11.351Z">
+<meta property="article:modified_time" content="2021-07-22T21:11:18.841Z">
 <meta property="article:author" content="Claire Chang">
 <meta property="article:tag" content="Angular">
 <meta name="twitter:card" content="summary">
@@ -134,7 +134,7 @@
 <h1 id="如何定義服務Service"><a href="#如何定義服務Service" class="headerlink" title="如何定義服務Service"></a>如何定義服務Service</h1><ol>
 <li>新增服務的typescript檔案</li>
 </ol>
-<p>命名為hero.service.ts，這個service收到log字串，並顯示出內容。</p>
+<p>命名為hero.service.ts，這個service將會收到log字串，並顯示出內容。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export class HeroService &#123;</span><br><span class="line">    heroLog(log: string) &#123;</span><br><span class="line">        console.log(log);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
@@ -145,6 +145,18 @@
 
 <h1 id="在service當中使用其他service"><a href="#在service當中使用其他service" class="headerlink" title="在service當中使用其他service"></a>在service當中使用其他service</h1><p>使用@Injectable()語法，加在要使用其他service的service。<br>舉例來說，HeroService當中使用TestService，就在HeroService加上@Injectable：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Injectable()</span><br><span class="line">export class HeroService &#123;</span><br><span class="line">    &lt;!-- 同樣需要注入service --&gt;</span><br><span class="line">    constructor(private testService: TestService);</span><br><span class="line"></span><br><span class="line">    addTest() &#123;</span><br><span class="line">        &lt;!-- 使用service的function --&gt;</span><br><span class="line">        this.testService.doTest();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr/>
+<br/>
+
+<h1 id="service的使用"><a href="#service的使用" class="headerlink" title="service的使用"></a>service的使用</h1><ol>
+<li>將資料傳給component使用</li>
+</ol>
+<p>service的資料和function：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export class HeroService &#123;</span><br><span class="line">    private data = [&#x27;one&#x27;, &#x27;two&#x27;];</span><br><span class="line"></span><br><span class="line">    getData() &#123;</span><br><span class="line">        return this.data.slice();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>component拿資料並render到html：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export class ChildComponent implments OnInit &#123;</span><br><span class="line">    childData;</span><br><span class="line">    constructor(private heroService: HeroService);</span><br><span class="line">    ngOnInit() &#123;</span><br><span class="line">        this.childData = this.heroService.getData();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             </div>
           
 
