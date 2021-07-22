@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Angular ngClass ngStyle 用法"/>
+
+
+
+
+  <meta name="keywords" content="Angular," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Claire's blog" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/21/Angular-ngClass-ngStyle/"/>
+
+
+<meta name="description" content="ngClass將css定義的樣式，符合邏輯條件時套用。例如我在css定義了special這個樣式：.special &amp;#123; color: yellow;&amp;#125; 在html檔案套用，當condition成立時，special這個class才會被套用到該標籤。 1&lt;p [ngClass]&#x3D;&quot;&amp;#123;special: condition&amp;#125;&quot;&gt;Te">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular ngClass ngStyle 用法">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/21/Angular-ngClass-ngStyle/index.html">
+<meta property="og:site_name" content="Claire&#39;s blog">
+<meta property="og:description" content="ngClass將css定義的樣式，符合邏輯條件時套用。例如我在css定義了special這個樣式：.special &amp;#123; color: yellow;&amp;#125; 在html檔案套用，當condition成立時，special這個class才會被套用到該標籤。 1&lt;p [ngClass]&#x3D;&quot;&amp;#123;special: condition&amp;#125;&quot;&gt;Te">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-07-21T22:07:18.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:11:25.687Z">
+<meta property="article:author" content="Claire Chang">
+<meta property="article:tag" content="Angular">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Angular ngClass ngStyle 用法 - Claire's blog </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Claire's blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Angular ngClass ngStyle 用法
+        
+      </h1>
+
+      <time class="post-time">
+          7月 21 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="ngClass"><a href="#ngClass" class="headerlink" title="ngClass"></a>ngClass</h2><p>將css定義的樣式，符合邏輯條件時套用。例如我在css定義了special這個樣式：<code>.special &#123; color: yellow;&#125;</code></p>
+<p>在html檔案套用，當condition成立時，special這個class才會被套用到該<p>標籤。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p [ngClass]=&quot;&#123;special: condition&#125;&quot;&gt;Test&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ngStyle"><a href="#ngStyle" class="headerlink" title="ngStyle"></a>ngStyle</h2><p>在html行內使用條件式來套用樣式，當condition成立，color為黃色，若不成立則為黑色。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p [ngStyle]=&#123;color: condition ? &#x27;yellow&#x27; : &#x27;black&#x27;&#125;&gt;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Angular/">Angular</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/07/22/Angular-ngSwitch/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Angular ngSwitch寫法</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2021/07/21/Angular-directives-renderer/">
+        <span class="next-text nav-default">Angular Directives｜Renderer更改CSS樣式</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">Claire Chang.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
