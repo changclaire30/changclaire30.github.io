@@ -43,7 +43,7 @@
 <meta property="og:description" content="在app.module.ts定義routes import RouterModule和Routes 定義routes 將routes imports到NgModule  123456789101112131415161718192021&lt;!-- 步驟1 --&gt;import &amp;#123; RouterModule, Routes &amp;#125; from &amp;#x27;@angular&#x2F;ro">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-07-23T15:14:51.000Z">
-<meta property="article:modified_time" content="2021-07-23T15:52:49.232Z">
+<meta property="article:modified_time" content="2021-07-23T16:15:34.736Z">
 <meta property="article:author" content="Claire Chang">
 <meta property="article:tag" content="Angular">
 <meta name="twitter:card" content="summary">
@@ -140,7 +140,7 @@
 <h1 id="在app-component-html使用"><a href="#在app-component-html使用" class="headerlink" title="在app.component.html使用"></a>在app.component.html使用</h1><p>上面定義的appRoutes，是在切換到不同path時，會render的component。<br>因此在html以router-outlet來標記出render的位置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul class=&quot;nav&quot;&gt;</span><br><span class="line">        &lt;li&gt;Home&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;Servers&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;Users&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span><br></pre></td></tr></table></figure>
 
-<h1 id="使用routerLink切換路由"><a href="#使用routerLink切換路由" class="headerlink" title="使用routerLink切換路由"></a>使用routerLink切換路由</h1><p>建立好router之後，直覺的想法是會使用：<code>&lt;a href=&quot;/users&quot;&gt;Users&lt;/a&gt;</code>。<br>但每次點擊，app都會被重啟，因此Angular有提供不會重啟的屬性routerLink：</p>
+<h1 id="使用routerLink切換路由"><a href="#使用routerLink切換路由" class="headerlink" title="使用routerLink切換路由"></a>使用routerLink切換路由</h1><p>建立好router之後，直覺的想法是會使用：<code>&lt;a href=&quot;/users&quot;&gt;Users&lt;/a&gt;</code>。<br>但使用a標籤的話，每次點擊都會重啟app，因此Angular有提供不會重啟的屬性routerLink：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;nav&quot;&gt;</span><br><span class="line">    &lt;li&gt;&lt;a routerLink=&quot;/&quot;&gt;Home&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;a routerLink=&quot;/servers&quot;&gt;Servers&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;a routerLink=&quot;/users&quot;&gt;Users&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
 
             </div>
