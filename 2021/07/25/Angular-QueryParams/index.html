@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Angular QueryParams｜路由參數設定與取得"/>
+
+
+
+
+  <meta name="keywords" content="Angular," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Claire's blog" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/25/Angular-QueryParams/"/>
+
+
+<meta name="description" content="在Angular Routing那篇文章有描述如何定義路由。此外，路由路徑也很常見傳入參數，例如...&#x2F;product&#x2F;edit?id&#x3D;5#loading，這種情況要如何用Angular來達成呢？ 路由參數設定在html如何達成...&#x2F;product&#x2F;edit?id&#x3D;5#loading： 123456&lt;a    [routerLink]&#x3D;&quot;[&amp;#x27;&#x2F;product&amp;#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular QueryParams｜路由參數設定與取得">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/25/Angular-QueryParams/index.html">
+<meta property="og:site_name" content="Claire&#39;s blog">
+<meta property="og:description" content="在Angular Routing那篇文章有描述如何定義路由。此外，路由路徑也很常見傳入參數，例如...&#x2F;product&#x2F;edit?id&#x3D;5#loading，這種情況要如何用Angular來達成呢？ 路由參數設定在html如何達成...&#x2F;product&#x2F;edit?id&#x3D;5#loading： 123456&lt;a    [routerLink]&#x3D;&quot;[&amp;#x27;&#x2F;product&amp;#x27;">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-07-25T23:02:56.000Z">
+<meta property="article:modified_time" content="2021-07-25T23:09:30.199Z">
+<meta property="article:author" content="Claire Chang">
+<meta property="article:tag" content="Angular">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F9C9P4VR81"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F9C9P4VR81');
+</script>
+
+
+    <title> Angular QueryParams｜路由參數設定與取得 - Claire's blog </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Claire's blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Angular QueryParams｜路由參數設定與取得
+        
+      </h1>
+
+      <time class="post-time">
+          7月 25 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在<a href="https://changclaire30.github.io/2021/07/23/Angular-Routing/">Angular Routing那篇文章</a>有描述如何定義路由。此外，路由路徑也很常見傳入參數，例如<code>.../product/edit?id=5#loading</code>，這種情況要如何用Angular來達成呢？</p>
+<h2 id="路由參數設定"><a href="#路由參數設定" class="headerlink" title="路由參數設定"></a>路由參數設定</h2><p>在html如何達成<code>.../product/edit?id=5#loading</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;a</span><br><span class="line">    [routerLink]=&quot;[&#x27;/product&#x27;, &#x27;edit&#x27;]&quot;</span><br><span class="line">    [queryParams&quot;&#123;id: &#x27;5&#x27;&#125;</span><br><span class="line">    fragment=&quot;loading&quot;&gt;</span><br><span class="line">    Product</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="取得路由參數"><a href="#取得路由參數" class="headerlink" title="取得路由參數"></a>取得路由參數</h2><h4 id="設定"><a href="#設定" class="headerlink" title="設定"></a>設定</h4><p>使用activatedRoute來取得，須先注入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constructor(private route: ActivatedRoute) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="1-快照snapshot"><a href="#1-快照snapshot" class="headerlink" title="1. 快照snapshot"></a>1. 快照snapshot</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(this.route.snapshot.queryParams);</span><br><span class="line">console.log(this.route.snapshot.fragment);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-訂閱subscribe"><a href="#2-訂閱subscribe" class="headerlink" title="2. 訂閱subscribe"></a>2. 訂閱subscribe</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this.route.queryParams.subscribe();</span><br><span class="line">this.route.fragment.subscribe();</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Angular/">Angular</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2021/07/24/Angular-ActivatedRoute/">
+        <span class="next-text nav-default">Angular ActivatedRoute｜用參數來創建多個子頁面</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2021
+    <span class="footer-author">Claire Chang.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

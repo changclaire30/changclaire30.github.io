@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Angular ActivatedRoute｜用參數來創建多個子頁面"/>
+
+
+
+
+  <meta name="keywords" content="Angular," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Claire's blog" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/24/Angular-ActivatedRoute/"/>
+
+
+<meta name="description" content="應用情境 多個商品頁面：product&#x2F;1，product&#x2F;2… 多個使用者：user&#x2F;1，user&#x2F;2…  概念ActivatedRoute會針對當前被激發的(activated)路由(route)，去取得該路由傳遞的參數(params)。 使用在Angular Routing那篇文章有描述如何定義路由。 1. 在app.module.ts定義路徑1234const appRoutes: Rou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular ActivatedRoute｜用參數來創建多個子頁面">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/24/Angular-ActivatedRoute/index.html">
+<meta property="og:site_name" content="Claire&#39;s blog">
+<meta property="og:description" content="應用情境 多個商品頁面：product&#x2F;1，product&#x2F;2… 多個使用者：user&#x2F;1，user&#x2F;2…  概念ActivatedRoute會針對當前被激發的(activated)路由(route)，去取得該路由傳遞的參數(params)。 使用在Angular Routing那篇文章有描述如何定義路由。 1. 在app.module.ts定義路徑1234const appRoutes: Rou">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-07-24T15:14:06.000Z">
+<meta property="article:modified_time" content="2021-07-24T15:25:57.761Z">
+<meta property="article:author" content="Claire Chang">
+<meta property="article:tag" content="Angular">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F9C9P4VR81"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F9C9P4VR81');
+</script>
+
+
+    <title> Angular ActivatedRoute｜用參數來創建多個子頁面 - Claire's blog </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Claire's blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Angular ActivatedRoute｜用參數來創建多個子頁面
+        
+      </h1>
+
+      <time class="post-time">
+          7月 24 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="應用情境"><a href="#應用情境" class="headerlink" title="應用情境"></a>應用情境</h2><ul>
+<li>多個商品頁面：product/1，product/2…</li>
+<li>多個使用者：user/1，user/2…</li>
+</ul>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>ActivatedRoute會針對當前被激發的(activated)路由(route)，去取得該路由傳遞的參數(params)。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在<a href="https://changclaire30.github.io/2021/07/23/Angular-Routing/">Angular Routing那篇文章</a>有描述如何定義路由。</p>
+<h3 id="1-在app-module-ts定義路徑"><a href="#1-在app-module-ts定義路徑" class="headerlink" title="1. 在app.module.ts定義路徑"></a>1. 在app.module.ts定義路徑</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const appRoutes: Routes = [</span><br><span class="line">    ...,</span><br><span class="line">    &#123;path: &#x27;users/:id/:name, component: UserComponent&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-在user-component-ts使用"><a href="#2-在user-component-ts使用" class="headerlink" title="2. 在user.component.ts使用"></a>2. 在user.component.ts使用</h3><h4 id="快照-snapshot"><a href="#快照-snapshot" class="headerlink" title="- 快照(snapshot)"></a>- 快照(snapshot)</h4><p>現在當我去url: …/user/1/John，就會出現相應的內容(需撰寫user.component.html)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector: &#x27;app-user&#x27;,</span><br><span class="line">  templateUrl: &#x27;./user.component.html&#x27;,</span><br><span class="line">  styleUrls: [&#x27;./user.component.css&#x27;]</span><br><span class="line">&#125;)</span><br><span class="line">export class UserComponent implements OnInit &#123;</span><br><span class="line">  user: &#123;id: number, name: string&#125;;</span><br><span class="line"></span><br><span class="line">  constructor(private route: ActivatedRoute) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    this.user = &#123;</span><br><span class="line">      id: this.route.snapshot.params[&#x27;id&#x27;],</span><br><span class="line">      name: this.route.snapshot.params[&#x27;name&#x27;]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="訂閱-subscribe"><a href="#訂閱-subscribe" class="headerlink" title="- 訂閱(subscribe)"></a>- 訂閱(subscribe)</h4><p>如果我在html加上<code>&lt;a [routerLink]=&quot;[&#39;/users&#39;, 5, &#39;Ann&#39;]&quot;&gt;Load #5 Ann&lt;/a&gt;</code>，頁面不會顯示新的參數，而是維持在原有的畫面，但是url換成了…/5/Ann。<br>如果要即時獲得新參數，使用訂閱(subscribe)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 與上方code相同，再加上... --&gt;</span><br><span class="line">ngOnInit() &#123;</span><br><span class="line">    ...</span><br><span class="line">    this.route.params</span><br><span class="line">      .subscribe(</span><br><span class="line">        (params: Params) =&gt; &#123;</span><br><span class="line">          this.user.id = params[&#x27;id&#x27;];</span><br><span class="line">          this.user.name = params[&#x27;name&#x27;];</span><br><span class="line">        &#125;</span><br><span class="line">      );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Angular/">Angular</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/07/25/Angular-QueryParams/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Angular QueryParams｜路由參數設定與取得</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2021/07/23/Angular-Routing/">
+        <span class="next-text nav-default">Angular Routing路由｜網頁之間的跳轉</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2021
+    <span class="footer-author">Claire Chang.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
