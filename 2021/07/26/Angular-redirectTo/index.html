@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="Angular navigate｜將參數帶到下個路由"/>
+  <meta name="description" content="Angular redirectTo｜404頁面"/>
 
 
 
@@ -32,18 +32,18 @@
 
 
 
-<link rel="canonical" href="http://changclaire30.github.io/2021/07/26/Angular-navigate/"/>
+<link rel="canonical" href="http://changclaire30.github.io/2021/07/26/Angular-redirectTo/"/>
 
 
-<meta name="description" content="Angular Routing路由前情提要 Routing路由設定 ActivatedRoute：用參數創建子頁面 QueryParams：取得路由參數  navigate的使用在Routing路由設定有提到如何用navigate切換路徑。 navigate還可以做到更多事情，舉例來說我的產品頁面有帶參數...&#x2F;product&#x2F;1?allow&#x3D;1；當我切換路徑之後想將參數帶入，像是...&#x2F;prod">
+<meta name="description" content="Angular Routing路由前情提要 Routing路由設定 ActivatedRoute：用參數創建子頁面 QueryParams：取得路由參數  使用redirectTo來達成404頁面redirectTo可以將指定的路徑，導向到不同的頁面；同時也可以將所有不指定的路徑，導向到指定頁面，因此可以拿來做404頁面。 1. 創建page-not-found component2. 設定路由在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Angular navigate｜將參數帶到下個路由">
-<meta property="og:url" content="http://changclaire30.github.io/2021/07/26/Angular-navigate/index.html">
+<meta property="og:title" content="Angular redirectTo｜404頁面">
+<meta property="og:url" content="http://changclaire30.github.io/2021/07/26/Angular-redirectTo/index.html">
 <meta property="og:site_name" content="Claire&#39;s blog">
-<meta property="og:description" content="Angular Routing路由前情提要 Routing路由設定 ActivatedRoute：用參數創建子頁面 QueryParams：取得路由參數  navigate的使用在Routing路由設定有提到如何用navigate切換路徑。 navigate還可以做到更多事情，舉例來說我的產品頁面有帶參數...&#x2F;product&#x2F;1?allow&#x3D;1；當我切換路徑之後想將參數帶入，像是...&#x2F;prod">
+<meta property="og:description" content="Angular Routing路由前情提要 Routing路由設定 ActivatedRoute：用參數創建子頁面 QueryParams：取得路由參數  使用redirectTo來達成404頁面redirectTo可以將指定的路徑，導向到不同的頁面；同時也可以將所有不指定的路徑，導向到指定頁面，因此可以拿來做404頁面。 1. 創建page-not-found component2. 設定路由在">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2021-07-26T16:38:29.000Z">
-<meta property="article:modified_time" content="2021-07-26T16:46:07.270Z">
+<meta property="article:published_time" content="2021-07-26T16:55:30.000Z">
+<meta property="article:modified_time" content="2021-07-26T16:59:55.329Z">
 <meta property="article:author" content="Claire Chang">
 <meta property="article:tag" content="Angular">
 <meta name="twitter:card" content="summary">
@@ -79,7 +79,7 @@
 </script>
 
 
-    <title> Angular navigate｜將參數帶到下個路由 - Claire's blog </title>
+    <title> Angular redirectTo｜404頁面 - Claire's blog </title>
   <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body>
@@ -125,7 +125,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Angular navigate｜將參數帶到下個路由
+          Angular redirectTo｜404頁面
         
       </h1>
 
@@ -143,13 +143,9 @@
 <li><a href="https://changclaire30.github.io/2021/07/24/Angular-ActivatedRoute/">ActivatedRoute：用參數創建子頁面</a></li>
 <li><a href="https://changclaire30.github.io/2021/07/25/Angular-QueryParams/">QueryParams：取得路由參數</a></li>
 </ul>
-<h1 id="navigate的使用"><a href="#navigate的使用" class="headerlink" title="navigate的使用"></a>navigate的使用</h1><p>在<a href="https://changclaire30.github.io/2021/07/23/Angular-Routing/">Routing路由設定</a>有提到如何用navigate切換路徑。</p>
-<p>navigate還可以做到更多事情，舉例來說我的產品頁面有帶參數<code>.../product/1?allow=1</code>；<br>當我切換路徑之後想將參數帶入，像是<code>.../product/1/edit?allow=1</code>，該如何辦到？</p>
-<h2 id="navigate實作"><a href="#navigate實作" class="headerlink" title="navigate實作"></a>navigate實作</h2><h4 id="1-產品頁面html加入點擊按鈕"><a href="#1-產品頁面html加入點擊按鈕" class="headerlink" title="1. 產品頁面html加入點擊按鈕"></a>1. 產品頁面html加入點擊按鈕</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button (click)=&quot;onEdit()&quot;&gt;Edit&lt;button&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-在ts檔撰寫onEdit"><a href="#2-在ts檔撰寫onEdit" class="headerlink" title="2. 在ts檔撰寫onEdit()"></a>2. 在ts檔撰寫onEdit()</h4><p>relativeTo是新路由的相對應路徑，以下方範例為例，新路由會是原有路由再加上/edit；<br>queryParamsHandling則是用來處理參數，有merge和preserve，因為是要保留原有的參數，所以使用preserve。</p>
-<p>註：this.route參考<a href="https://changclaire30.github.io/2021/07/24/Angular-ActivatedRoute/">ActivatedRoute：用參數創建子頁面</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">constructor(..., private router: Router) &#123; &#125;</span><br><span class="line"></span><br><span class="line">onEdit() &#123;</span><br><span class="line">    this.router.navigate([&#x27;edit], &#123;relativeTo: this.route, queryParamsHandling: &#x27;preserve&#x27;&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用redirectTo來達成404頁面"><a href="#使用redirectTo來達成404頁面" class="headerlink" title="使用redirectTo來達成404頁面"></a>使用redirectTo來達成404頁面</h1><p>redirectTo可以將指定的路徑，導向到不同的頁面；同時也可以將所有不指定的路徑，導向到指定頁面，因此可以拿來做404頁面。</p>
+<h4 id="1-創建page-not-found-component"><a href="#1-創建page-not-found-component" class="headerlink" title="1. 創建page-not-found component"></a>1. 創建page-not-found component</h4><h4 id="2-設定路由"><a href="#2-設定路由" class="headerlink" title="2. 設定路由"></a>2. 設定路由</h4><p>在app.module.ts，先定義404頁面的路徑；再使用redirectTo，將所有不指定路徑導向到404頁面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const appRoutes: Routes = [</span><br><span class="line">    ...,</span><br><span class="line">    &#123; path: &#x27;not-found&#x27;, component: PageNotFoundComponent &#125;, </span><br><span class="line">    &#123; path: &#x27;**&#x27;, redirectTo: &#x27;/not-found&#x27; &#125;, </span><br><span class="line">]</span><br></pre></td></tr></table></figure>
             </div>
           
 
@@ -167,15 +163,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2021/07/26/Angular-redirectTo/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Angular redirectTo｜404頁面</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2021/07/26/Angular-Nested-Routes/">
-        <span class="next-text nav-default">Angular Nested Routes｜子路徑</span>
+      <a class="next" href="/2021/07/26/Angular-navigate/">
+        <span class="next-text nav-default">Angular navigate｜將參數帶到下個路由</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
