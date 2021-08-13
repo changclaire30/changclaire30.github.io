@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="Angular redirectTo｜404頁面"/>
+  <meta name="description" content="JWT驗證Angular教學資源"/>
 
 
 
@@ -32,18 +32,18 @@
 
 
 
-<link rel="canonical" href="http://changclaire30.github.io/2021/07/26/Angular-redirectTo/"/>
+<link rel="canonical" href="http://changclaire30.github.io/2021/08/05/jwt-angular/"/>
 
 
-<meta name="description" content="Angular Routing路由前情提要 Routing路由設定 ActivatedRoute：用參數創建子頁面 QueryParams：取得路由參數  使用redirectTo來達成404頁面redirectTo可以將指定的路徑，導向到不同的頁面；同時也可以將所有不指定的路徑，導向到指定頁面，因此可以拿來做404頁面。 1. 創建page-not-found component2. 設定路由在">
+<meta name="description" content="https:&#x2F;&#x2F;www.bezkoder.com&#x2F;angular-11-jwt-auth&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Angular redirectTo｜404頁面">
-<meta property="og:url" content="http://changclaire30.github.io/2021/07/26/Angular-redirectTo/index.html">
+<meta property="og:title" content="JWT驗證Angular教學資源">
+<meta property="og:url" content="http://changclaire30.github.io/2021/08/05/jwt-angular/index.html">
 <meta property="og:site_name" content="Claire&#39;s blog">
-<meta property="og:description" content="Angular Routing路由前情提要 Routing路由設定 ActivatedRoute：用參數創建子頁面 QueryParams：取得路由參數  使用redirectTo來達成404頁面redirectTo可以將指定的路徑，導向到不同的頁面；同時也可以將所有不指定的路徑，導向到指定頁面，因此可以拿來做404頁面。 1. 創建page-not-found component2. 設定路由在">
+<meta property="og:description" content="https:&#x2F;&#x2F;www.bezkoder.com&#x2F;angular-11-jwt-auth&#x2F;">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2021-07-26T16:55:30.000Z">
-<meta property="article:modified_time" content="2021-07-26T16:59:55.329Z">
+<meta property="article:published_time" content="2021-08-05T20:55:09.000Z">
+<meta property="article:modified_time" content="2021-08-05T20:55:32.185Z">
 <meta property="article:author" content="Claire Chang">
 <meta property="article:tag" content="Angular">
 <meta name="twitter:card" content="summary">
@@ -79,7 +79,7 @@
 </script>
 
 
-    <title> Angular redirectTo｜404頁面 - Claire's blog </title>
+    <title> JWT驗證Angular教學資源 - Claire's blog </title>
   <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body>
@@ -125,12 +125,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Angular redirectTo｜404頁面
+          JWT驗證Angular教學資源
         
       </h1>
 
       <time class="post-time">
-          7月 26 2021
+          8月 05 2021
       </time>
     </header>
 
@@ -138,14 +138,8 @@
 
     
             <div class="post-content">
-            <h3 id="Angular-Routing路由前情提要"><a href="#Angular-Routing路由前情提要" class="headerlink" title="Angular Routing路由前情提要"></a>Angular Routing路由前情提要</h3><ul>
-<li><a href="https://changclaire30.github.io/2021/07/23/Angular-Routing/">Routing路由設定</a></li>
-<li><a href="https://changclaire30.github.io/2021/07/24/Angular-ActivatedRoute/">ActivatedRoute：用參數創建子頁面</a></li>
-<li><a href="https://changclaire30.github.io/2021/07/25/Angular-QueryParams/">QueryParams：取得路由參數</a></li>
-</ul>
-<h1 id="使用redirectTo來達成404頁面"><a href="#使用redirectTo來達成404頁面" class="headerlink" title="使用redirectTo來達成404頁面"></a>使用redirectTo來達成404頁面</h1><p>redirectTo可以將指定的路徑，導向到不同的頁面；同時也可以將所有不指定的路徑，導向到指定頁面，因此可以拿來做404頁面。</p>
-<h4 id="1-創建page-not-found-component"><a href="#1-創建page-not-found-component" class="headerlink" title="1. 創建page-not-found component"></a>1. 創建page-not-found component</h4><h4 id="2-設定路由"><a href="#2-設定路由" class="headerlink" title="2. 設定路由"></a>2. 設定路由</h4><p>在app.module.ts，先定義404頁面的路徑；再使用redirectTo，將所有不指定路徑導向到404頁面：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const appRoutes: Routes = [</span><br><span class="line">    ...,</span><br><span class="line">    &#123; path: &#x27;not-found&#x27;, component: PageNotFoundComponent &#125;, </span><br><span class="line">    &#123; path: &#x27;**&#x27;, redirectTo: &#x27;/not-found&#x27; &#125;, </span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+            <p><a target="_blank" rel="noopener" href="https://www.bezkoder.com/angular-11-jwt-auth/">https://www.bezkoder.com/angular-11-jwt-auth/</a></p>
+
             </div>
           
 
@@ -163,15 +157,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2021/08/05/jwt-angular/">
+      <a class="prev" href="/2021/08/13/angular-canActivate/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">JWT驗證Angular教學資源</span>
+        <span class="prev-text nav-default">Angular canActivate｜受保護的連結</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
-      <a class="next" href="/2021/07/26/Angular-navigate/">
-        <span class="next-text nav-default">Angular navigate｜將參數帶到下個路由</span>
+      <a class="next" href="/2021/07/26/Angular-redirectTo/">
+        <span class="next-text nav-default">Angular redirectTo｜404頁面</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
