@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Angular Material｜DataTable表格"/>
+
+
+
+
+  <meta name="keywords" content="Angular, Material," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Claire's blog" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://changclaire30.github.io/2021/08/18/Angular-Material-DataTable/"/>
+
+
+<meta name="description" content="Angular Material有提供表格(table)這個元件，並提供方便的features，包括排序(sorting)、篩選(filter)、換頁(pagination)等等。官方文件：https:&#x2F;&#x2F;material.angular.io&#x2F;components&#x2F;table&#x2F;overview 1. 建立資料來源datasourceAngular Material有MatTableDataSou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular Material｜DataTable表格">
+<meta property="og:url" content="http://changclaire30.github.io/2021/08/18/Angular-Material-DataTable/index.html">
+<meta property="og:site_name" content="Claire&#39;s blog">
+<meta property="og:description" content="Angular Material有提供表格(table)這個元件，並提供方便的features，包括排序(sorting)、篩選(filter)、換頁(pagination)等等。官方文件：https:&#x2F;&#x2F;material.angular.io&#x2F;components&#x2F;table&#x2F;overview 1. 建立資料來源datasourceAngular Material有MatTableDataSou">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-08-18T19:21:41.000Z">
+<meta property="article:modified_time" content="2021-08-18T19:53:47.789Z">
+<meta property="article:author" content="Claire Chang">
+<meta property="article:tag" content="Angular, Material">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F9C9P4VR81"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F9C9P4VR81');
+</script>
+
+
+    <title> Angular Material｜DataTable表格 - Claire's blog </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Claire's blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Angular Material｜DataTable表格
+        
+      </h1>
+
+      <time class="post-time">
+          8月 18 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>Angular Material有提供表格(table)這個元件，並提供方便的features，包括排序(sorting)、篩選(filter)、換頁(pagination)等等。<br>官方文件：<a target="_blank" rel="noopener" href="https://material.angular.io/components/table/overview">https://material.angular.io/components/table/overview</a></p>
+<h1 id="1-建立資料來源datasource"><a href="#1-建立資料來源datasource" class="headerlink" title="1. 建立資料來源datasource"></a>1. 建立資料來源datasource</h1><p>Angular Material有MatTableDataSource這個class可以使用，也可以自己customize。<br>首先在元件的ts檔，還有module.ts都有imports MatTableModule。</p>
+<p>在table.component.ts定義要獲取的資料：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">export class PastTrainingsComponent implements OnInit &#123;</span><br><span class="line">    dataSource = new MatTableDataSource&lt;any&gt;();</span><br><span class="line"></span><br><span class="line">    ngOnInit() &#123;</span><br><span class="line">        &lt;!-- 1. static資料 --&gt;</span><br><span class="line">        this.dataSource.data = this.tableService.getData();</span><br><span class="line">        &lt;!-- 2. API --&gt;</span><br><span class="line">        this.httpClient.get&lt;any&gt;(&#x27;URL&#x27;).subscribe(data =&gt; &#123;</span><br><span class="line">            this.dataSource.data = data;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-定義表格"><a href="#2-定義表格" class="headerlink" title="2. 定義表格"></a>2. 定義表格</h1><p>在table.component.html定義表格，先定義資料來源，並建立各欄位。<br>最後使用mat-header-row和mat-row來呈現，這裡的陣列對應到前面欄位的def，若順序調換，欄位呈現的順序會依陣列來決定。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 綁定資料來源 --&gt;</span><br><span class="line">&lt;mat-table [dataSource]=&quot;dataSource&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 建立&quot;姓名&quot;欄位 --&gt;</span><br><span class="line">    &lt;ng-container matColumnDef=&quot;name&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 標題列 --&gt;</span><br><span class="line">        &lt;mat-header-cell *matHeaderCellDef mat-sort-header&gt;姓名&lt;/mat-header-cell&gt;</span><br><span class="line">        &lt;!-- 子欄位 --&gt;</span><br><span class="line">        &lt;mat-cell *matCellDef=&quot;let element&quot;&gt;&#123;&#123; element.name &#125;&#125;&lt;/mat-cell&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/ng-container&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 顯示標題列 --&gt;</span><br><span class="line">    &lt;mat-header-row *matHeaderRowDef=&quot;[&#x27;name&#x27;, ...]&quot;&gt;&lt;/mat-header-row&gt;</span><br><span class="line">    &lt;!-- 顯示資料列 --&gt;</span><br><span class="line">    &lt;mat-row *matRowDef=&quot;let row; columns: [&#x27;name&#x27;, ...]&quot;&gt;&lt;/mat-row&gt;</span><br><span class="line">&lt;/mat-table&gt;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Angular-Material/">Angular, Material</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2021/08/13/angular-canActivate/">
+        <span class="next-text nav-default">Angular canActivate｜受保護的連結</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2021
+    <span class="footer-author">Claire Chang.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
